@@ -1,6 +1,6 @@
-# metrics-tee
+# Metrics
 
-Metrics-tee is a simple node.js http service that accepts http requests and forwards them to multiple other endpoints. It was built to send [BBA Chain](https://bbachain.net/) node metrics to multiple influxdb instances.
+Metrics is a simple node.js http service that accepts http requests and forwards them to multiple other endpoints. It was built to send [BBA Chain](https://bbachain.net/) node metrics to multiple influxdb instances.
 
 ## Prerequisites
 
@@ -19,8 +19,8 @@ npm install pm2 -g
 ## Installation
 
 ```bash
-git clone https://github.com/coverlet/metrics-tee.git
-cd metrics-tee
+git clone git@github.com:bbalabs/metrics.git.git
+cd metrics
 npm i
 ```
 Rename `config.sample.json` to `config.json` and add all the endpoints that you want the metrics to be forwarded to:
@@ -37,7 +37,7 @@ Rename `config.sample.json` to `config.json` and add all the endpoints that you 
 
 ## Running
 
-Point bbachain metrics config env variable to the metrics-tee instance:
+Point bbachain metrics config env variable to the metrics instance:
 ```bash
 Environment="BBACHAIN_METRICS_CONFIG=host=http://127.0.0.1:3311,db=a,u=a,p=a"
 ```
@@ -57,5 +57,5 @@ pm2 save
 ### Run with systemd
 Alternatively, you can use systemd service manager to handle app execution. In your `.service` file, use this for ExecStart:
 ```bash
-ExecStart=/usr/bin/node /path/to/metrics-tee/build/index.js
+ExecStart=/usr/bin/node /path/to/metrics/build/index.js
 ```
